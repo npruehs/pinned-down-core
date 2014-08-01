@@ -19,3 +19,7 @@
 *.exe
 *.out
 *.app
+Source/PinnedDownCore/PinnedDownCore/Debug/
+Source/PinnedDownCore/PinnedDownCore/Release/
+Source/PinnedDownCore/PinnedDownCore.sdf
+Source/PinnedDownCore/PinnedDownCore.v11.suo

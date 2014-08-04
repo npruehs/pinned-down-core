@@ -15,5 +15,9 @@ void Game::Update(float dt)
 	this->eventManager->Tick();
 	this->entityManager->CleanUpEntities();
 	this->eventManager->Tick();
-	this->logger->Flush();
+
+	if (this->logger != nullptr)
+	{
+		this->logger->Flush();
+	}
 }

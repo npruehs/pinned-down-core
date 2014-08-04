@@ -13,7 +13,7 @@ namespace PinnedDownCore
 	public:
 		SystemManager(Game* game);
 
-		void AddSystem(GameSystem* system);
+		void AddSystem(std::shared_ptr<GameSystem> system);
 		void InitSystems();
 		void Update(float dt);
 		void Render();

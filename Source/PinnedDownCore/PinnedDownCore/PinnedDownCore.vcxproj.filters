@@ -39,9 +39,6 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EntityComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EntityManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,6 +58,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NetRole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IEntityComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

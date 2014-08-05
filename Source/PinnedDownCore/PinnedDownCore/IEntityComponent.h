@@ -4,7 +4,7 @@
 
 namespace PinnedDownCore
 {
-	class EntityComponent
+	class IEntityComponent
 	{
 	public:
 		virtual const HashedString & GetComponentType() const = 0;

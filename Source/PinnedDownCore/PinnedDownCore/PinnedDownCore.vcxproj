@@ -73,7 +73,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="EntityComponent.h" />
+    <ClInclude Include="IEntityComponent.h" />
     <ClInclude Include="EntityCreatedEvent.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="EntityRemovedEvent.h" />

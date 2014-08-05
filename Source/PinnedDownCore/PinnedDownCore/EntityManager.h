@@ -3,11 +3,11 @@
 #include <map>
 #include <set>
 #include <memory>
-#include "EntityComponent.h"
+#include "IEntityComponent.h"
 
 #define INVALID_ENTITY_ID 0
 
-typedef std::shared_ptr<PinnedDownCore::EntityComponent> ComponentPtr;
+typedef std::shared_ptr<PinnedDownCore::IEntityComponent> ComponentPtr;
 typedef std::map<int, ComponentPtr> ComponentMap;
 
 namespace PinnedDownCore

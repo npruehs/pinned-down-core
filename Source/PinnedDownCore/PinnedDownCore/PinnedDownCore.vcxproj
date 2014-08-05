@@ -84,6 +84,7 @@
     <ClInclude Include="HashedString.h" />
     <ClInclude Include="IEventListener.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="NetRole.h" />
     <ClInclude Include="PinnedDownCore.h" />
     <ClInclude Include="ResourceHandle.h" />
     <ClInclude Include="ResourceManager.h" />

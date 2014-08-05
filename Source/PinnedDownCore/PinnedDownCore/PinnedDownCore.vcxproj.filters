@@ -60,6 +60,9 @@
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NetRole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EventManager.cpp">

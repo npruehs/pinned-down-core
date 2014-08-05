@@ -19,27 +19,27 @@ namespace PinnedDownCore
 			this->hash = this->HashString(string);
 		}
 
-		unsigned long getHash() const
+		unsigned long GetHash() const
 		{
 			return this->hash;
 		}
 
-		size_t getLength() const
+		size_t GetLength() const
 		{
 			return this->length;
 		}
 
-		char const* const getString() const
+		char const* const GetString() const
 		{
 			return this->string;
 		}
 
 		bool operator < (HashedString const & other) const {
-			return this->getHash() < other.getHash();
+			return this->GetHash() < other.GetHash();
 		}
 
 		bool operator == (HashedString const & other) const {
-			return this->getHash() == other.getHash();
+			return this->GetHash() == other.GetHash();
 		}
 
 	private:

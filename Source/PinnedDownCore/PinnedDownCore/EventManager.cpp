@@ -14,7 +14,7 @@ void EventManager::AddListener(IEventListener* listener)
 void EventManager::AddListener(IEventListener* listener, HashedString const & eventType)
 {
 	// Get the event type entry in the listeners map.
-	std::map<unsigned long, std::list<IEventListener*>>::iterator iterator = this->listeners.find(eventType.getHash());
+	std::map<unsigned long, std::list<IEventListener*>>::iterator iterator = this->listeners.find(eventType.GetHash());
 
 	if (iterator != this->listeners.end())
 	{
@@ -28,14 +28,14 @@ void EventManager::AddListener(IEventListener* listener, HashedString const & ev
 		// Add new entry to listeners map.
 		std::list<IEventListener*> eventListeners = std::list<IEventListener*>();
 		eventListeners.push_back(listener);
-		this->listeners.insert(std::pair<unsigned long, std::list<IEventListener*>>(eventType.getHash(), eventListeners));
+		this->listeners.insert(std::pair<unsigned long, std::list<IEventListener*>>(eventType.GetHash(), eventListeners));
 	}
 }
 
 void EventManager::RemoveListener(IEventListener* listener, HashedString const & eventType)
 {
 	// Find listener to remove.
-	std::map<unsigned long, std::list<IEventListener*>>::iterator it = this->listeners.find(eventType.getHash());
+	std::map<unsigned long, std::list<IEventListener*>>::iterator it = this->listeners.find(eventType.GetHash());
 
 	if (it != this->listeners.end())
 	{
@@ -62,7 +62,7 @@ void EventManager::QueueEvent(EventPtr const & newEvent)
 void EventManager::RaiseEvent(EventPtr const & newEvent)
 {
 	HashedString const & eventType = newEvent->GetEventType();
-	unsigned long eventHash = eventType.getHash();
+	unsigned long eventHash = eventType.GetHash();
 
 	// Get listeners for the event.
 	std::map<unsigned long, std::list<IEventListener*>>::iterator itListeners = this->listeners.find(eventHash);

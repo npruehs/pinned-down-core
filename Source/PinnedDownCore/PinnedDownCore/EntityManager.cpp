@@ -34,7 +34,7 @@ void EntityManager::RemoveEntity(int entityId)
 void EntityManager::AddComponent(int entityId, ComponentPtr const & component)
 {
 	// Get the component type entry in the components map.
-	std::map<unsigned long, ComponentMap>::iterator iterator = this->componentMaps.find(component->GetComponentType().getHash());
+	std::map<unsigned long, ComponentMap>::iterator iterator = this->componentMaps.find(component->GetComponentType().GetHash());
 
 	if (iterator != this->componentMaps.end())
 	{
@@ -48,14 +48,14 @@ void EntityManager::AddComponent(int entityId, ComponentPtr const & component)
 		// Add new component map.
 		ComponentMap componentMap = ComponentMap();
 		componentMap.insert(std::pair<int, ComponentPtr>(entityId, component));
-		this->componentMaps.insert(std::pair<unsigned long, ComponentMap>(component->GetComponentType().getHash(), componentMap));
+		this->componentMaps.insert(std::pair<unsigned long, ComponentMap>(component->GetComponentType().GetHash(), componentMap));
 	}
 }
 
 ComponentPtr EntityManager::GetComponent(int entityId, HashedString componentType)
 {
 	// Lookup component map.
-	std::map<unsigned long, ComponentMap>::iterator iterator = this->componentMaps.find(componentType.getHash());
+	std::map<unsigned long, ComponentMap>::iterator iterator = this->componentMaps.find(componentType.GetHash());
 
 	if (iterator != this->componentMaps.end())
 	{

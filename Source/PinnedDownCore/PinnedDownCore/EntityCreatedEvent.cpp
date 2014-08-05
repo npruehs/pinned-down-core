@@ -2,4 +2,4 @@
 
 using namespace PinnedDownCore;
 
-const HashedString EntityCreatedEvent::EntityCreatedEventType = HashedString(L"EntityCreated");
+const HashedString EntityCreatedEvent::EntityCreatedEventType = HashedString("EntityCreated");

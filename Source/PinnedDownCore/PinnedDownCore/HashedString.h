@@ -8,10 +8,15 @@ namespace PinnedDownCore
 	class HashedString
 	{
 	public:
-		HashedString(wchar_t const* const string)
+		HashedString(std::string string) : HashedString(string.c_str())
 		{
-			this->hash = this->HashString(string);
+		}
+
+		HashedString(char const* const string)
+		{
 			this->string = string;
+			this->length = strlen(string);
+			this->hash = this->HashString(string);
 		}
 
 		unsigned long getHash() const
@@ -19,7 +24,12 @@ namespace PinnedDownCore
 			return this->hash;
 		}
 
-		wchar_t const* const getString() const
+		size_t getLength() const
+		{
+			return this->length;
+		}
+
+		char const* const getString() const
 		{
 			return this->string;
 		}
@@ -34,9 +44,10 @@ namespace PinnedDownCore
 
 	private:
 		unsigned long hash;
-		wchar_t const* string;
+		char const* string;
+		size_t length;
 
-		unsigned long HashedString::HashString(wchar_t const* string)
+		unsigned long HashedString::HashString(char const* string)
 		{
 			// Largest prime number smaller than 2^16.
 			unsigned long base = 65521L;
@@ -59,7 +70,7 @@ namespace PinnedDownCore
 #define DO16(buf)   { DO8(buf, 0); DO8(buf, 8); }
 
 			// Compute hash.
-			for (size_t length = wcslen(string); length > 0;)
+			for (size_t length = this->length; length > 0;)
 			{
 				unsigned long k = length < max ? length : max;
 				length -= k;

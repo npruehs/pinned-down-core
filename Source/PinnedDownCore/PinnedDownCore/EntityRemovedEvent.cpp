@@ -2,4 +2,4 @@
 
 using namespace PinnedDownCore;
 
-const HashedString EntityRemovedEvent::EntityRemovedEventType = HashedString(L"EntityRemoved");
+const HashedString EntityRemovedEvent::EntityRemovedEventType = HashedString("EntityRemoved");

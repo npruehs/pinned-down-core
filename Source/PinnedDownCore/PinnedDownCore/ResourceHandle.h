@@ -9,7 +9,7 @@ namespace PinnedDownCore
 	{
 	public:
 		ResourceHandle();
-		ResourceHandle(std::wstring resourceName);
+		ResourceHandle(std::string resourceName);
 		~ResourceHandle();
 
 		std::shared_ptr<HashedString> GetResourceName();

@@ -39,7 +39,7 @@ void EventManager::RemoveListener(IEventListener* listener, HashedString const &
 
 	if (it != this->listeners.end())
 	{
-		std::list<IEventListener*> eventListeners = it->second;
+		std::list<IEventListener*>& eventListeners = it->second;
 
 		for (std::list<IEventListener*>::iterator it2 = eventListeners.begin(); it2 != eventListeners.end(); it2++)
 		{

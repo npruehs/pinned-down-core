@@ -1,5 +1,6 @@
 #pragma once
 
+#include "EntityManager.h"
 #include "Event.h"
 
 namespace PinnedDownCore
@@ -13,11 +14,11 @@ namespace PinnedDownCore
 			return EntityRemovedEventType;
 		}
 
-		int entityId;
+		Entity entity;
 
-		explicit EntityRemovedEvent(int entityId)
+		explicit EntityRemovedEvent(Entity entity)
 		{
-			this->entityId = entityId;
+			this->entity = entity;
 		}
 	};
 }

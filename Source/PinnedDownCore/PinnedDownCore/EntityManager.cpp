@@ -8,61 +8,61 @@ using namespace PinnedDownCore;
 EntityManager::EntityManager(Game* game)
 {
 	this->game = game;
-	this->nextEntityId = 0;
+	this->nextEntity = 0;
 }
 
-int EntityManager::CreateEntity()
+Entity EntityManager::CreateEntity()
 {
-	int entityId = ++this->nextEntityId;
+	Entity entity = ++this->nextEntity;
 
 	// Raise event.
-	auto entityCreatedEvent = std::make_shared<EntityCreatedEvent>(entityId);
+	auto entityCreatedEvent = std::make_shared<EntityCreatedEvent>(entity);
 	this->game->eventManager->QueueEvent(entityCreatedEvent);
 
-	return entityId;
+	return entity;
 }
 
-void EntityManager::RemoveEntity(int entityId)
+void EntityManager::RemoveEntity(Entity entity)
 {
-	this->removedEntities.insert(entityId);
+	this->removedEntities.insert(entity);
 
 	// Raise event.
-	auto entityRemovedEvent = std::make_shared<EntityRemovedEvent>(entityId);
+	auto entityRemovedEvent = std::make_shared<EntityRemovedEvent>(entity);
 	this->game->eventManager->QueueEvent(entityRemovedEvent);
 }
 
-void EntityManager::AddComponent(int entityId, ComponentPtr const & component)
+void EntityManager::AddComponent(Entity entity, ComponentPtr const & component)
 {
 	// Get the component type entry in the components map.
-	std::map<unsigned long, ComponentMap>::iterator iterator = this->componentMaps.find(component->GetComponentType().GetHash());
+	std::map<Entity, ComponentMap>::iterator iterator = this->componentMaps.find(component->GetComponentType().GetHash());
 
 	if (iterator != this->componentMaps.end())
 	{
 		ComponentMap & componentMap = iterator->second;
 
 		// Add component.
-		componentMap.insert(std::pair<int, ComponentPtr>(entityId, component));
+		componentMap.insert(std::pair<int, ComponentPtr>(entity, component));
 	}
 	else
 	{
 		// Add new component map.
 		ComponentMap componentMap = ComponentMap();
-		componentMap.insert(std::pair<int, ComponentPtr>(entityId, component));
-		this->componentMaps.insert(std::pair<unsigned long, ComponentMap>(component->GetComponentType().GetHash(), componentMap));
+		componentMap.insert(std::pair<int, ComponentPtr>(entity, component));
+		this->componentMaps.insert(std::pair<Entity, ComponentMap>(component->GetComponentType().GetHash(), componentMap));
 	}
 }
 
-ComponentPtr EntityManager::GetComponent(int entityId, HashedString componentType)
+ComponentPtr EntityManager::GetComponent(Entity entity, HashedString componentType)
 {
 	// Lookup component map.
-	std::map<unsigned long, ComponentMap>::iterator iterator = this->componentMaps.find(componentType.GetHash());
+	std::map<Entity, ComponentMap>::iterator iterator = this->componentMaps.find(componentType.GetHash());
 
 	if (iterator != this->componentMaps.end())
 	{
 		ComponentMap & componentMap = iterator->second;
 
 		// Lookup component.
-		ComponentMap::iterator componentIterator = componentMap.find(entityId);
+		ComponentMap::iterator componentIterator = componentMap.find(entity);
 
 		if (componentIterator != componentMap.end())
 		{
@@ -76,16 +76,16 @@ ComponentPtr EntityManager::GetComponent(int entityId, HashedString componentTyp
 
 void EntityManager::CleanUpEntities()
 {
-	for (std::set<int>::iterator entityIterator = this->removedEntities.begin(); entityIterator != this->removedEntities.end(); ++entityIterator)
+	for (std::set<Entity>::iterator entityIterator = this->removedEntities.begin(); entityIterator != this->removedEntities.end(); ++entityIterator)
 	{
-		int entityId = *entityIterator;
+		Entity entity = *entityIterator;
 
 		// Find all attached components.
-		for (std::map<unsigned long, ComponentMap>::iterator compMapIterator = this->componentMaps.begin(); compMapIterator != this->componentMaps.end(); ++compMapIterator)
+		for (std::map<Entity, ComponentMap>::iterator compMapIterator = this->componentMaps.begin(); compMapIterator != this->componentMaps.end(); ++compMapIterator)
 		{
 			ComponentMap & componentMap = compMapIterator->second;
 
-			ComponentMap::iterator componentIterator = componentMap.find(entityId);
+			ComponentMap::iterator componentIterator = componentMap.find(entity);
 
 			if (componentIterator != componentMap.end())
 			{

@@ -5,10 +5,12 @@
 #include <memory>
 #include "IEntityComponent.h"
 
+typedef unsigned int Entity;
+
 #define INVALID_ENTITY_ID 0
 
 typedef std::shared_ptr<PinnedDownCore::IEntityComponent> ComponentPtr;
-typedef std::map<int, ComponentPtr> ComponentMap;
+typedef std::map<Entity, ComponentPtr> ComponentMap;
 
 namespace PinnedDownCore
 {
@@ -19,15 +21,15 @@ namespace PinnedDownCore
 	public:
 		EntityManager(Game* game);
 
-		int CreateEntity();
-		void RemoveEntity(int entityId);
+		Entity CreateEntity();
+		void RemoveEntity(Entity entity);
 
-		void AddComponent(int entityId, ComponentPtr const & component);
-		ComponentPtr GetComponent(int entityId, HashedString componentType);
+		void AddComponent(Entity entity, ComponentPtr const & component);
+		ComponentPtr GetComponent(Entity entity, HashedString componentType);
 
-		template <class T> std::shared_ptr<T> GetComponent(int entityId, HashedString componentType)
+		template <class T> std::shared_ptr<T> GetComponent(Entity entity, HashedString componentType)
 		{
-			ComponentPtr p = this->GetComponent(entityId, componentType);
+			ComponentPtr p = this->GetComponent(entity, componentType);
 			return std::static_pointer_cast<T>(p);
 		}
 
@@ -37,12 +39,12 @@ namespace PinnedDownCore
 		Game* game;
 
 		// Maps that are mapping entity ids to specific components.
-		std::map<unsigned long, ComponentMap> componentMaps;
+		std::map<Entity, ComponentMap> componentMaps;
 
 		// Ids of all entities that have been removed in this tick.
-		std::set<int> removedEntities;
+		std::set<Entity> removedEntities;
 
 		// Id that will be assigned to the next entity created.
-		int nextEntityId;
+		Entity nextEntity;
 	};
 }

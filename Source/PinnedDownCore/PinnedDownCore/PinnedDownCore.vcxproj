@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EntityInitializedEvent.h" />
     <ClInclude Include="IEntityComponent.h" />
     <ClInclude Include="EntityCreatedEvent.h" />
     <ClInclude Include="EntityManager.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EntityCreatedEvent.cpp" />
+    <ClCompile Include="EntityInitializedEvent.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EntityRemovedEvent.cpp" />
     <ClCompile Include="EventManager.cpp" />

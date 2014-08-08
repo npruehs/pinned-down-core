@@ -1,9 +1,11 @@
+#include "Game.h"
 #include "ResourceManager.h"
 
 using namespace PinnedDownCore;
 
-ResourceManager::ResourceManager()
+ResourceManager::ResourceManager(Game* game)
 {
+	this->game = game;
 }
 
 ResourceManager::~ResourceManager()

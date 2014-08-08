@@ -8,10 +8,12 @@ typedef std::shared_ptr<PinnedDownCore::ResourceHandle> ResHandlePtr;
 
 namespace PinnedDownCore
 {
+	class Game;
+
 	class ResourceManager
 	{
 	public:
-		ResourceManager();
+		ResourceManager(Game* game);
 		~ResourceManager();
 
 		ResHandlePtr GetResource(HashedString resourceName);
@@ -24,6 +26,8 @@ namespace PinnedDownCore
 		}
 
 	protected:
+		Game* game;
+
 		std::map<unsigned long, ResHandlePtr> resourceMap;
 	};
 }

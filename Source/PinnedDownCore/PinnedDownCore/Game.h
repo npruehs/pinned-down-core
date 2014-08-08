@@ -18,8 +18,9 @@ namespace PinnedDownCore
 		std::unique_ptr<EventManager> eventManager;
 		std::unique_ptr<SystemManager> systemManager;
 		std::unique_ptr<EntityManager> entityManager;
-		std::unique_ptr<Logger> logger;
 		std::unique_ptr<ResourceManager> resourceManager;
+
+		std::shared_ptr<Logger> logger;
 
 		void Update(float dt);
 	};

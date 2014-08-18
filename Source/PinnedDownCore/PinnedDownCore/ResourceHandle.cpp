@@ -7,8 +7,8 @@ ResourceHandle::ResourceHandle()
 }
 
 ResourceHandle::ResourceHandle(std::string resourceName)
+	: resourceName(std::make_shared<HashedString>(resourceName.c_str()))
 {
-	this->resourceName = std::make_shared<HashedString>(resourceName.c_str());
 }
 
 std::shared_ptr<HashedString> ResourceHandle::GetResourceName()

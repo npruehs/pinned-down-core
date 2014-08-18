@@ -47,7 +47,7 @@ namespace PinnedDownCore
 		char const* string;
 		size_t length;
 
-		unsigned long HashedString::HashString(char const* string)
+		unsigned long HashString(char const* string)
 		{
 			// Largest prime number smaller than 2^16.
 			unsigned long base = 65521L;

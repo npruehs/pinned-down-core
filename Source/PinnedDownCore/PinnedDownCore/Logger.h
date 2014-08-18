@@ -17,42 +17,42 @@ namespace PinnedDownCore
 	class Logger
 	{
 	public:
-		bool Logger::IsEnabled(LogLevel logLevel)
+		bool IsEnabled(LogLevel logLevel)
 		{
 			return logLevel >= this->logLevel;
 		}
 
-		void Logger::Trace(std::wstring const message)
+		void LogTrace(const std::wstring & message)
 		{
 			this->Log(LogLevel::Trace, message);
 		}
 
-		void Logger::Debug(std::wstring const message)
+		void LogDebug(const std::wstring & message)
 		{
 			this->Log(LogLevel::Debug, message);
 		}
 
-		void Logger::Info(std::wstring const message)
+		void LogInfo(const std::wstring & message)
 		{
 			this->Log(LogLevel::Info, message);
 		}
 
-		void Logger::Warn(std::wstring const message)
+		void LogWarn(const std::wstring & message)
 		{
 			this->Log(LogLevel::Warn, message);
 		}
 
-		void Logger::Error(std::wstring const message)
+		void LogError(const std::wstring & message)
 		{
 			this->Log(LogLevel::Error, message);
 		}
 
-		void Logger::Fatal(std::wstring const message)
+		void LogFatal(const std::wstring & message)
 		{
 			this->Log(LogLevel::Fatal, message);
 		}
 
-		void Logger::Log(LogLevel logLevel, std::wstring const message)
+		void Log(LogLevel logLevel, const std::wstring & message)
 		{
 			if (this->IsEnabled(logLevel))
 			{
@@ -60,7 +60,7 @@ namespace PinnedDownCore
 			}
 		}
 
-		std::wstring Logger::LogLevelToString(LogLevel logLevel)
+		std::wstring LogLevelToString(LogLevel logLevel)
 		{
 			switch (logLevel)
 			{
@@ -81,7 +81,7 @@ namespace PinnedDownCore
 			}
 		}
 
-		virtual void Logger::Flush() { }
+		virtual void Flush() { }
 
 	protected:
 		Logger(LogLevel logLevel)
@@ -89,7 +89,7 @@ namespace PinnedDownCore
 			this->logLevel = logLevel;
 		}
 
-		virtual void Logger::WriteLog(LogLevel logLevel, const wchar_t* const message) = 0;
+		virtual void WriteLog(LogLevel logLevel, const wchar_t* const message) = 0;
 
 	private:
 		LogLevel logLevel;

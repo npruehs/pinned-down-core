@@ -32,7 +32,7 @@ ResHandlePtr ResourceManager::GetResource(HashedString resourceName)
 void ResourceManager::UnloadResource(HashedString resourceName)
 {
 	// Find resource to unload.
-	for (std::map<unsigned long, ResHandlePtr>::iterator iterator = this->resourceMap.begin(); iterator != this->resourceMap.end(); iterator++)
+	for (std::map<unsigned long, ResHandlePtr>::iterator iterator = this->resourceMap.begin(); iterator != this->resourceMap.end(); ++iterator)
 	{
 		if (iterator->first == resourceName.GetHash())
 		{

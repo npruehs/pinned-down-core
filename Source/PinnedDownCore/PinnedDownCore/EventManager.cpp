@@ -41,7 +41,7 @@ void EventManager::RemoveListener(IEventListener* listener, HashedString const &
 	{
 		std::list<IEventListener*>& eventListeners = it->second;
 
-		for (std::list<IEventListener*>::iterator it2 = eventListeners.begin(); it2 != eventListeners.end(); it2++)
+		for (std::list<IEventListener*>::iterator it2 = eventListeners.begin(); it2 != eventListeners.end(); ++it2)
 		{
 			if (*it2 == listener)
 			{
@@ -79,7 +79,7 @@ void EventManager::RaiseEvent(EventPtr const & newEvent)
 	}
 
 	// Get listeners for all events.
-	for (std::list<IEventListener*>::iterator it = this->listenersForAllEvents.begin(); it != this->listenersForAllEvents.end(); it++)
+	for (std::list<IEventListener*>::iterator it = this->listenersForAllEvents.begin(); it != this->listenersForAllEvents.end(); ++it)
 	{
 		(*it)->OnEvent(*newEvent);
 	}
@@ -87,7 +87,7 @@ void EventManager::RaiseEvent(EventPtr const & newEvent)
 
 void EventManager::Tick()
 {
-	while (this->newEvents.size() > 0)
+	while (!this->newEvents.empty())
 	{
 		// Move events from new event queue to current event queue.
 		EventPtr newEvent = this->newEvents.front();
@@ -95,7 +95,7 @@ void EventManager::Tick()
 		this->currentEvents.push_back(newEvent);
 
 		// Process all events.
-		while (this->currentEvents.size() > 0)
+		while (!this->currentEvents.empty())
 		{
 			// Get next event to process.
 			EventPtr currentEvent = this->currentEvents.front();

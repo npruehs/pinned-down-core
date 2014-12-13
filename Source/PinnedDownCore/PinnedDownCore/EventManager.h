@@ -10,6 +10,18 @@
 
 typedef std::shared_ptr<PinnedDownCore::Event> EventPtr;
 
+#define EVENT_HANDLER_DECLARATION(EventType) void On##EventType(EventType& data)
+
+#define EVENT_HANDLER_DEFINITION(ClassName, EventType) void ClassName::On##EventType(EventType& data)
+
+#define CALL_EVENT_HANDLER(EventType)\
+	if (newEvent.GetEventType() == EventType::EventType##Type)\
+			{\
+		auto e = static_cast<EventType&>(newEvent);\
+		this->On##EventType(e);\
+		return;\
+			}\
+
 namespace PinnedDownCore
 {
 	class EventManager

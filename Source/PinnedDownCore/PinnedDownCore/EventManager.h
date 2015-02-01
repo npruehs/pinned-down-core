@@ -35,6 +35,9 @@ namespace PinnedDownCore
 		// Adds the passed listener for events of the specified type.
 		void AddListener(IEventListener* listener, HashedString const & eventType);
 
+		// Removes the passed listener for events of all types.
+		void RemoveListener(IEventListener* listener);
+
 		// Removes the passed listener for events of the specified type.
 		void RemoveListener(IEventListener* listener, HashedString const & eventType);
 

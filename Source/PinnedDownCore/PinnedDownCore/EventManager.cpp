@@ -32,6 +32,11 @@ void EventManager::AddListener(IEventListener* listener, HashedString const & ev
 	}
 }
 
+void EventManager::RemoveListener(IEventListener* listener)
+{
+	this->listenersForAllEvents.remove(listener);
+}
+
 void EventManager::RemoveListener(IEventListener* listener, HashedString const & eventType)
 {
 	// Find listener to remove.

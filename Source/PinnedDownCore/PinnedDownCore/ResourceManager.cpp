@@ -13,10 +13,10 @@ ResourceManager::~ResourceManager()
 	this->resourceMap.clear();
 }
 
-ResHandlePtr ResourceManager::GetResource(HashedString resourceName)
+ResHandlePtr ResourceManager::GetResource(const HashedString & resourceName) const
 {
 	// Lookup resource.
-	std::map<unsigned long, ResHandlePtr>::iterator iterator = this->resourceMap.find(resourceName.GetHash());
+	auto iterator = this->resourceMap.find(resourceName.GetHash());
 
 	if (iterator != this->resourceMap.end())
 	{
@@ -29,7 +29,7 @@ ResHandlePtr ResourceManager::GetResource(HashedString resourceName)
 	}
 }
 
-void ResourceManager::UnloadResource(HashedString resourceName)
+void ResourceManager::UnloadResource(const HashedString & resourceName)
 {
 	// Find resource to unload.
 	for (std::map<unsigned long, ResHandlePtr>::iterator iterator = this->resourceMap.begin(); iterator != this->resourceMap.end(); ++iterator)

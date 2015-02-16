@@ -16,10 +16,10 @@ namespace PinnedDownCore
 		ResourceManager(Game* game);
 		~ResourceManager();
 
-		ResHandlePtr GetResource(HashedString resourceName);
-		void UnloadResource(HashedString resourceName);
+		ResHandlePtr GetResource(const HashedString & resourceName) const;
+		void UnloadResource(const HashedString & resourceName);
 
-		template <class T> std::shared_ptr<T> GetResource(HashedString resourceName)
+		template <class T> std::shared_ptr<T> GetResource(const HashedString & resourceName) const
 		{
 			ResHandlePtr p = this->GetResource(resourceName);
 			return std::static_pointer_cast<T>(p);

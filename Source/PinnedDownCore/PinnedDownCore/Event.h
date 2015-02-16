@@ -12,7 +12,7 @@ namespace PinnedDownCore
 	public:
 		virtual const HashedString & GetEventType() const = 0;
 
-		virtual std::wstring ToString()
+		virtual std::wstring ToString() const
 		{
 			std::string eventType(this->GetEventType().GetString());
 			return std::wstring(eventType.begin(), eventType.end());
@@ -23,7 +23,7 @@ namespace PinnedDownCore
 			return NetRole::None;
 		}
 
-		virtual void Serialize(std::ostrstream& out) { }
+		virtual void Serialize(std::ostrstream& out) const { }
 		virtual void Deserialize(std::istrstream& in) { }
 	};
 }

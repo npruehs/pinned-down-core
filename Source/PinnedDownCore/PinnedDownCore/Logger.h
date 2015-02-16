@@ -17,7 +17,7 @@ namespace PinnedDownCore
 	class Logger
 	{
 	public:
-		bool IsEnabled(LogLevel logLevel)
+		bool IsEnabled(LogLevel logLevel) const
 		{
 			return logLevel >= this->logLevel;
 		}
@@ -60,7 +60,7 @@ namespace PinnedDownCore
 			}
 		}
 
-		std::wstring LogLevelToString(LogLevel logLevel)
+		std::wstring LogLevelToString(LogLevel logLevel) const
 		{
 			switch (logLevel)
 			{

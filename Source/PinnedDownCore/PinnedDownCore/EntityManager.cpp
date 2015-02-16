@@ -31,7 +31,7 @@ void EntityManager::RemoveEntity(Entity entity)
 	this->game->eventManager->QueueEvent(entityRemovedEvent);
 }
 
-void EntityManager::AddComponent(Entity entity, ComponentPtr const & component)
+void EntityManager::AddComponent(Entity entity, const ComponentPtr & component)
 {
 	// Get the component type entry in the components map.
 	std::map<Entity, ComponentMap>::iterator iterator = this->componentMaps.find(component->GetComponentType().GetHash());
@@ -52,17 +52,17 @@ void EntityManager::AddComponent(Entity entity, ComponentPtr const & component)
 	}
 }
 
-ComponentPtr EntityManager::GetComponent(Entity entity, HashedString componentType)
+ComponentPtr EntityManager::GetComponent(Entity entity, const HashedString & componentType) const
 {
 	// Lookup component map.
-	std::map<Entity, ComponentMap>::iterator iterator = this->componentMaps.find(componentType.GetHash());
+	auto iterator = this->componentMaps.find(componentType.GetHash());
 
 	if (iterator != this->componentMaps.end())
 	{
-		ComponentMap & componentMap = iterator->second;
+		auto componentMap = iterator->second;
 
 		// Lookup component.
-		ComponentMap::iterator componentIterator = componentMap.find(entity);
+		auto componentIterator = componentMap.find(entity);
 
 		if (componentIterator != componentMap.end())
 		{

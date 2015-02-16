@@ -24,10 +24,10 @@ namespace PinnedDownCore
 		Entity CreateEntity();
 		void RemoveEntity(Entity entity);
 
-		void AddComponent(Entity entity, ComponentPtr const & component);
-		ComponentPtr GetComponent(Entity entity, HashedString componentType);
+		void AddComponent(Entity entity, const ComponentPtr & component);
+		ComponentPtr GetComponent(Entity entity, const HashedString & componentType) const;
 
-		template <class T> std::shared_ptr<T> GetComponent(Entity entity, HashedString componentType)
+		template <class T> std::shared_ptr<T> GetComponent(Entity entity, const HashedString & componentType) const
 		{
 			ComponentPtr p = this->GetComponent(entity, componentType);
 			return std::static_pointer_cast<T>(p);

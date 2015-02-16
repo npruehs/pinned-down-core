@@ -4,6 +4,8 @@
 #include <memory>
 #include "GameSystem.h"
 
+typedef std::shared_ptr<PinnedDownCore::GameSystem> SystemPtr;
+
 namespace PinnedDownCore
 {
 	class Game;
@@ -13,13 +15,13 @@ namespace PinnedDownCore
 	public:
 		SystemManager(Game* game);
 
-		void AddSystem(std::shared_ptr<GameSystem> system);
+		void AddSystem(const SystemPtr & system);
 		void InitSystems();
 		void Update(float dt);
 		void Render();
 
 	private:
 		Game* game;
-		std::vector<std::shared_ptr<GameSystem>> systems;
+		std::vector<SystemPtr> systems;
 	};
 }

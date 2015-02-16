@@ -8,7 +8,7 @@ SystemManager::SystemManager(Game* game)
 	this->game = game;
 }
 
-void SystemManager::AddSystem(std::shared_ptr<GameSystem> system)
+void SystemManager::AddSystem(const SystemPtr & system)
 {
 	systems.push_back(system);
 }

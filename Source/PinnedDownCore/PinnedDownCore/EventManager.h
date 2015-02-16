@@ -42,10 +42,10 @@ namespace PinnedDownCore
 		void RemoveListener(IEventListener* listener, HashedString const & eventType);
 
 		// Queues the specified event for processing in the next tick.
-		void QueueEvent(EventPtr const & newEvent);
+		void QueueEvent(const EventPtr & newEvent);
 
 		// Raises the specified event to be handled immediately.
-		void RaiseEvent(EventPtr const & newEvent);
+		void RaiseEvent(const EventPtr & newEvent);
 
 		// Raises all queued events.
 		void Tick();

@@ -24,3 +24,6 @@ Source/PinnedDownCore/PinnedDownCore.v11.suo
 Source/PinnedDownCore/PinnedDownCore.opensdf
 Source/PinnedDownCore/PinnedDownCore/PinnedDownCore.vcxproj.user
 Obj/
+
+# Windows Runtime
+*.pri

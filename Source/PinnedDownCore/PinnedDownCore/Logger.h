@@ -22,62 +22,62 @@ namespace PinnedDownCore
 			return logLevel >= this->logLevel;
 		}
 
-		void LogTrace(const std::wstring & message)
+		void LogTrace(const std::string & message)
 		{
 			this->Log(LogLevel::Trace, message);
 		}
 
-		void LogDebug(const std::wstring & message)
+		void LogDebug(const std::string & message)
 		{
 			this->Log(LogLevel::Debug, message);
 		}
 
-		void LogInfo(const std::wstring & message)
+		void LogInfo(const std::string & message)
 		{
 			this->Log(LogLevel::Info, message);
 		}
 
-		void LogWarn(const std::wstring & message)
+		void LogWarn(const std::string & message)
 		{
 			this->Log(LogLevel::Warn, message);
 		}
 
-		void LogError(const std::wstring & message)
+		void LogError(const std::string & message)
 		{
 			this->Log(LogLevel::Error, message);
 		}
 
-		void LogFatal(const std::wstring & message)
+		void LogFatal(const std::string & message)
 		{
 			this->Log(LogLevel::Fatal, message);
 		}
 
-		void Log(LogLevel logLevel, const std::wstring & message)
+		void Log(LogLevel logLevel, const std::string & message)
 		{
 			if (this->IsEnabled(logLevel))
 			{
-				this->WriteLog(logLevel, (message + L"\n").c_str());
+				this->WriteLog(logLevel, (message + "\n").c_str());
 			}
 		}
 
-		std::wstring LogLevelToString(LogLevel logLevel) const
+		std::string LogLevelToString(LogLevel logLevel) const
 		{
 			switch (logLevel)
 			{
 			case LogLevel::Debug:
-				return L"DEBUG";
+				return "DEBUG";
 			case LogLevel::Error:
-				return L"ERROR";
+				return "ERROR";
 			case LogLevel::Fatal:
-				return L"FATAL";
+				return "FATAL";
 			case LogLevel::Info:
-				return L"INFO";
+				return "INFO";
 			case LogLevel::Trace:
-				return L"TRACE";
+				return "TRACE";
 			case LogLevel::Warn:
-				return L"WARN";
+				return "WARN";
 			default:
-				return L"LOG";
+				return "LOG";
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace PinnedDownCore
 			this->logLevel = logLevel;
 		}
 
-		virtual void WriteLog(LogLevel logLevel, const wchar_t* const message) = 0;
+		virtual void WriteLog(LogLevel logLevel, const char* const message) = 0;
 
 	private:
 		LogLevel logLevel;

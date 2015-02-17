@@ -12,10 +12,9 @@ namespace PinnedDownCore
 	public:
 		virtual const HashedString & GetEventType() const = 0;
 
-		virtual std::wstring ToString() const
+		virtual std::string ToString() const
 		{
-			std::string eventType(this->GetEventType().GetString());
-			return std::wstring(eventType.begin(), eventType.end());
+			return this->GetEventType().GetString();
 		}
 
 		virtual const NetRole GetNetRole() const

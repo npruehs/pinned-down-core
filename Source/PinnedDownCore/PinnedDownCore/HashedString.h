@@ -72,7 +72,7 @@ namespace PinnedDownCore
 			// Compute hash.
 			for (size_t length = this->length; length > 0;)
 			{
-				unsigned long k = length < max ? length : max;
+				size_t k = length < max ? length : max;
 				length -= k;
 
 				while (k >= 16)

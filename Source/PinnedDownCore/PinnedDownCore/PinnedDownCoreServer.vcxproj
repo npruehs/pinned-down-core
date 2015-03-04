@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BidirectionalMap.h" />
     <ClInclude Include="EntityInitializedEvent.h" />
     <ClInclude Include="IEntityComponent.h" />
     <ClInclude Include="EntityCreatedEvent.h" />

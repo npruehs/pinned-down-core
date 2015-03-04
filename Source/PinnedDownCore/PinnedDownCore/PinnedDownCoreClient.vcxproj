@@ -38,6 +38,7 @@
     <ClCompile Include="SystemManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BidirectionalMap.h" />
     <ClInclude Include="EntityCreatedEvent.h" />
     <ClInclude Include="EntityInitializedEvent.h" />
     <ClInclude Include="EntityManager.h" />
